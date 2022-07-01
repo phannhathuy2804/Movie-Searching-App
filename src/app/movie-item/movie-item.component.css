@@ -1,0 +1,8 @@
+figure {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  border: solid;
+  border-radius: 10px;
+  margin: 2rem auto;
+}

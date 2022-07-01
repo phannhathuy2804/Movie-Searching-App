@@ -1,0 +1,50 @@
+<div class="movie-item">
+  <ng-container *ngIf="input">
+    <figure *ngIf="movieInfo!.Title != undefined; else NotAvailable">
+      <img src="{{ this.movieInfo!.Poster }}" alt="poster" width="400" />
+      <div>Title: {{ movieInfo!.Title }}</div>
+      <div>Year: {{ movieInfo!.Year }}</div>
+      <button type="button" class="btn btn-info btn-sm" (click)="openPopup()">
+        Show more
+      </button>
+
+      <div
+        class="modal"
+        tabindex="-1"
+        role="dialog"
+        [ngStyle]="{ display: displayStyle }"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">{{ movieInfo!.Title }}</h4>
+            </div>
+            <div class="modal-body">
+              <figure>
+                <img
+                  src="{{ this.movieInfo!.Poster }}"
+                  alt="poster"
+                  width="450"
+                />
+              </figure>
+              <div>Year: {{ movieInfo!.Year }}</div>
+              <div>Rated: {{ movieInfo!.Rated }}</div>
+              <div>Director: {{ movieInfo!.Director }}</div>
+              <div>Plot: {{ movieInfo!.Plot }}</div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="closePopup()"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+    <ng-template #NotAvailable> No result</ng-template>
+  </ng-container>
+</div>
